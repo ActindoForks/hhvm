@@ -47,12 +47,17 @@ static std::set<std::string> s_post_methods{
   "REPORT",
   "PROPFIND",
   "PROPPATCH",
+  "MKACTIVITY",
   "MKCOL",
   "MKCALENDAR",
   "PUT",
   "DELETE",
   "LOCK",
   "UNLOCK",
+  "COPY",
+  "MOVE",
+  "MERGE",
+  "PATCH",
 };
 }
 
@@ -219,8 +224,8 @@ void ProxygenTransport::onHeadersComplete(
   } else {
     // looks like proxygen HTTP parser understands a few more methods
     // than libevent:
-    //   TRACE, COPY, MOVE, MKACTIVITY, CHECKOUT, MERGE, MSEARCH, NOTIFY,
-    //   SUBSCRIBE, UNSUBSCRIBE, PATCH
+    //   TRACE, CHECKOUT, MSEARCH, NOTIFY,
+    //   SUBSCRIBE, UNSUBSCRIBE,
     m_method = Transport::Method::Unknown;
     sendErrorResponse(400 /* Bad Request */);
     return;

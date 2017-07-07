@@ -110,6 +110,8 @@ class Memcached {
   public function setMulti($items, $expiration = 0) { }
   public function setMultiByKey($server_key, $items, $expiration = 0) { }
   public function setOption($option, $value) { }
+  public function setSaslAuthData(string $username,
+                                  string $password): void { }
   public function touch(string $key, int $expiration = 0): bool { }
   public function touchByKey(string $server_key,
                              string $key,

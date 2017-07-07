@@ -1121,6 +1121,23 @@ bool HHVM_METHOD(Memcached, setoption, int option, const Variant& value) {
   return true;
 }
 
+bool HHVM_METHOD(Memcached, setsaslauthdata, 
+                            const String& username, 
+                            const String& password) {
+  auto data = Native::data<MemcachedData>(this_);
+
+  memcached_return_t ret = memcached_set_sasl_auth_data(
+                                         &data->m_impl->memcached,
+                                         username.c_str(),
+                                         password.c_str());
+
+  if (ret == MEMCACHED_SUCCESS) {
+    return true;
+  }
+
+  return false;
+}
+
 int64_t HHVM_METHOD(Memcached, getresultcode) {
   auto data = Native::data<MemcachedData>(this_);
   return data->m_impl->rescode;
@@ -1234,6 +1251,7 @@ struct MemcachedExtension final : Extension {
     HHVM_ME(Memcached, flush);
     HHVM_ME(Memcached, getoption);
     HHVM_ME(Memcached, setoption);
+    HHVM_ME(Memcached, setsaslauthdata);
     HHVM_ME(Memcached, getresultcode);
     HHVM_ME(Memcached, getresultmessage);
     HHVM_ME(Memcached, ispersistent);

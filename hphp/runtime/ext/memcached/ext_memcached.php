@@ -729,6 +729,22 @@ class Memcached {
   }
 
   /**
+   * Set the credentials to use for authentication
+   *
+   * @param string $username - The username to use for authentication.
+   * @param string $password - The password to use for authentication.
+   */
+  public function setSaslAuthData(string $username,
+                                  string $password): void {
+      if (!$this->setSaslAuthData($username, $password)) {
+        trigger_error(
+          sprintf('Could not set sasl auth'),
+          E_WARNING
+        );
+      }
+  }
+
+  /**
    * Set a new expiration on an item
    *
    * @param string $key - The key under which to store the value.

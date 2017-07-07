@@ -103,8 +103,10 @@ array(50) {
   [47]=>
   string(10) "setOptions"
   [48]=>
-  string(5) "touch"
+  string(15) "setSaslAuthData"
   [49]=>
+  string(5) "touch"
+  [50]=>
   string(10) "touchByKey"
 }
 ================
@@ -215,7 +217,9 @@ array(50) {
   [47]=>
   string(10) "setOptions"
   [48]=>
-  string(5) "touch"
+  string(15) "setSaslAuthData"
   [49]=>
+  string(5) "touch"
+  [50]=>
   string(10) "touchByKey"
 }

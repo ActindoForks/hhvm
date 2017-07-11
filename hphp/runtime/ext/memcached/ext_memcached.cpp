@@ -1121,7 +1121,7 @@ bool HHVM_METHOD(Memcached, setoption, int option, const Variant& value) {
   return true;
 }
 
-bool HHVM_METHOD(Memcached, setsaslauthdata, 
+void HHVM_METHOD(Memcached, setsaslauthdata, 
                             const String& username, 
                             const String& password) {
   auto data = Native::data<MemcachedData>(this_);
@@ -1131,11 +1131,11 @@ bool HHVM_METHOD(Memcached, setsaslauthdata,
                                          username.c_str(),
                                          password.c_str());
 
-  if (ret == MEMCACHED_SUCCESS) {
-    return true;
+  if (ret != MEMCACHED_SUCCESS) {
+    raise_warning("error setting memcached sasl auth data");
   }
 
-  return false;
+  data->m_impl->rescode = (int)ret;
 }
 
 int64_t HHVM_METHOD(Memcached, getresultcode) {

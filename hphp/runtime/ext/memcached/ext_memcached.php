@@ -734,15 +734,9 @@ class Memcached {
    * @param string $username - The username to use for authentication.
    * @param string $password - The password to use for authentication.
    */
+  <<__Native>>
   public function setSaslAuthData(string $username,
-                                  string $password): void {
-      if (!$this->setSaslAuthData($username, $password)) {
-        trigger_error(
-          sprintf('Could not set sasl auth'),
-          E_WARNING
-        );
-      }
-  }
+                                  string $password): void;
 
   /**
    * Set a new expiration on an item

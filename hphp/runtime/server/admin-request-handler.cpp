@@ -419,7 +419,7 @@ void AdminRequestHandler::handleRequest(Transport *transport) {
 
     if (needs_password && !RuntimeOption::HashedAdminPasswords.empty()) {
       bool matched = false;
-#if defined(FACEBOOK) || defined(HAVE_LIBSODIUM)
+/*#if defined(FACEBOOK) || defined(HAVE_LIBSODIUM)
       const auto password = transport->getParam("auth");
       for (const std::string& hash : RuntimeOption::HashedAdminPasswords) {
         if (crypto_pwhash_str_verify(hash.data(),
@@ -429,7 +429,7 @@ void AdminRequestHandler::handleRequest(Transport *transport) {
           break;
         }
       }
-#endif
+#endif*/
       if (!matched) {
         transport->sendString("Unauthorized", 401);
         break;

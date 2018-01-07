@@ -1,4 +1,4 @@
 [submodule "third-party"]
 	path = third-party
-	url = https://github.com/hhvm/hhvm-third-party.git
+	url = git@github.com:Actindo/hhvm-third-party.git
 	ignore = dirty

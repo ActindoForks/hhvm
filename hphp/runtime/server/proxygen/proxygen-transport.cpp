@@ -47,12 +47,17 @@ static std::set<std::string> s_post_methods{
   "REPORT",
   "PROPFIND",
   "PROPPATCH",
+  "MKACTIVITY",
   "MKCOL",
   "MKCALENDAR",
   "PUT",
   "DELETE",
   "LOCK",
   "UNLOCK",
+  "COPY",
+  "MOVE",
+  "MERGE",
+  "PATCH",
 };
 }
 
